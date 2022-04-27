@@ -253,7 +253,10 @@ public class PropertyVerifier extends AbstractOptimizer {
       return Integer.class;
     }
 
-    Object tryStaticMethodRef = tryStaticAccess();
+    Object tryStaticMethodRef = null;
+    if (pCtx != null && pCtx.getEnableStaticAccess()) {
+      tryStaticMethodRef = tryStaticAccess();
+    }
 
     if (tryStaticMethodRef != null) {
       fqcn = true;

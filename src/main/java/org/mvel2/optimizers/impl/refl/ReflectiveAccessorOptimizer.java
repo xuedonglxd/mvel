@@ -641,7 +641,10 @@ public class ReflectiveAccessorOptimizer extends AbstractOptimizer implements Ac
       return ctx;
     }
     else {
-      Object tryStaticMethodRef = tryStaticAccess();
+      Object tryStaticMethodRef = null;
+      if (pCtx != null && pCtx.getEnableStaticAccess()) {
+        tryStaticMethodRef = tryStaticAccess();
+      }
       staticAccess = true;
       if (tryStaticMethodRef != null) {
         if (tryStaticMethodRef instanceof Class) {

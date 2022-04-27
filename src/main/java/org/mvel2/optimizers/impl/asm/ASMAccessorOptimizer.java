@@ -1196,7 +1196,10 @@ public class ASMAccessorOptimizer extends AbstractOptimizer implements AccessorO
       return lit;
     }
     else {
-      Object ts = tryStaticAccess();
+      Object ts = null;
+      if (pCtx != null && pCtx.getEnableStaticAccess()) {
+        ts = tryStaticAccess();
+      }
 
       if (ts != null) {
         if (ts instanceof Class) {

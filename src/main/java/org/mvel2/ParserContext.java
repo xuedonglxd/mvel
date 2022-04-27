@@ -104,6 +104,8 @@ public class ParserContext implements Serializable {
   private boolean indexAllocation = false;
   protected boolean variablesEscape = false;
 
+  private boolean enableStaticAccess = false;
+
   public ParserContext() {
     parserConfiguration = new ParserConfiguration();
   }
@@ -169,7 +171,7 @@ public class ParserContext implements Serializable {
     ctx.blockSymbols = blockSymbols;
     ctx.executableCodeReached = executableCodeReached;
     ctx.indexAllocation = indexAllocation;
-
+    ctx.enableStaticAccess = enableStaticAccess;
     return ctx;
   }
 
@@ -237,7 +239,7 @@ public class ParserContext implements Serializable {
     ctx.blockSymbols = blockSymbols;
     ctx.executableCodeReached = executableCodeReached;
     ctx.indexAllocation = indexAllocation;
-
+    ctx.enableStaticAccess = enableStaticAccess;
     return ctx;
   }
 
@@ -1009,6 +1011,10 @@ public class ParserContext implements Serializable {
 
   public void setLastTypeParameters(Type[] lastTypeParameters) {
     this.lastTypeParameters = lastTypeParameters;
+  }
+
+  public boolean getEnableStaticAccess() {
+    return enableStaticAccess;
   }
 
   public boolean isAllowBootstrapBypass() {
